@@ -93,6 +93,7 @@ h1, h2, h3, h4, h5, h6{
 
 
 .item{
+  cursor: pointer;
   display: flex;
   flex-direction: row;
   background-color: white;
@@ -102,6 +103,12 @@ h1, h2, h3, h4, h5, h6{
 
   border-left: 1px solid black;
   border-right: 1px solid black;
+
+  transition: background-color .1s linear;
+}
+
+.item:hover{
+  background-color: #e5e5e5;
 }
 
 .item:first-child{
