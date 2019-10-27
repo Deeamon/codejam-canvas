@@ -132,6 +132,12 @@ h1, h2, h3, h4, h5, h6{
   padding-left: 1em;
 }
 
+.item__icon{
+  display: block;
+  width: 20px;
+  height: 20px;
+}
+
 .item__icon--circle,
 .item__icon--square{
   width: 20px;
