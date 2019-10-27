@@ -43,17 +43,6 @@ function draw(frames){
   }
 }
 
-// const xhr = new XMLHttpRequest();
-// xhr.addEventListener("load", function(){
-//   const data = this.response;
-//   draw(data);
-//   alert(data);
-// });
-// xhr.open('GET', 'https://raw.githubusercontent.com/rolling-scopes-school/tasks/master/tasks/stage-2/codejam-canvas/data/4x4.json')
-// xhr.send();
-
-
-
 function drawImg(){
   var canvas = document.getElementById('canvas');
   if(canvas.getContext){
@@ -67,19 +56,46 @@ function drawImg(){
   }
 }
 
-document.getElementById('draw').addEventListener('click', () => {
-  // const frames = getFrames();
-  // draw(frames);
+document.getElementById('draw4x4').addEventListener('click', () => {
+  const CANVAS_SIZE = 4;
+  const CANVAS_DEFAULT = 512;
+  const canvas = document.getElementById('canvas');
+  let ctx = canvas.getContext('2d');
 
-  // const response = await fetch('https://raw.githubusercontent.com/rolling-scopes-school/tasks/master/tasks/stage-2/codejam-canvas/data/4x4.json');
-  // const x4Json = await response.json();
-  // console.log(JSON.stringify(x4Json));
+  let canvas_size = CANVAS_DEFAULT / CANVAS_SIZE;
 
-  let x4Data = '';
   fetch('https://raw.githubusercontent.com/rolling-scopes-school/tasks/master/tasks/stage-2/codejam-canvas/data/4x4.json')
     .then(res => res.json())
-    .then(data => x4Data = data);
-  console.log(x4Data);
+    .then(data => {
+      for( let i = 0; i < data.length; i++){
+        for(let j = 0; j < data.length; j++){
+        ctx.fillStyle = `#${data[i][j]}`;
+        ctx.fillRect(i * canvas_size, j * canvas_size, canvas_size, canvas_size);
+      }
+    }
+  });
+      
+});
+
+document.getElementById('draw32x32').addEventListener('click', () => {
+  const CANVAS_SIZE = 32;
+  const CANVAS_DEFAULT = 512;
+  const canvas = document.getElementById('canvas');
+  let ctx = canvas.getContext('2d');
+
+  let canvas_size = CANVAS_DEFAULT / CANVAS_SIZE;
+
+  fetch('https://raw.githubusercontent.com/rolling-scopes-school/tasks/master/tasks/stage-2/codejam-canvas/data/32x32.json')
+    .then(res => res.json())
+    .then(data => {
+      for( let i = 0; i < data.length; i++){
+        for(let j = 0; j < data.length; j++){
+        ctx.fillStyle = `rgba(${data[i][j]})`;
+        ctx.fillRect(i * canvas_size, j * canvas_size, canvas_size, canvas_size);
+      }
+    }
+  });
+      
 });
 
 document.getElementById('draw256x256').addEventListener('click', () => {
